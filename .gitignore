@@ -163,3 +163,5 @@ basic/CMakeLists/multifiles/build/CMakeFiles/main.dir/objects1
 basic/CMakeLists/multifiles/build/CMakeFiles/main.dir/progress.make
 basic/CMakeLists/multifiles/build/CMakeFiles/main.dir/src/main.cpp.obj
 basic/CMakeLists/multifiles/build/CMakeFiles/main.dir/src/main.cpp.obj.d
+basic/Multithread/x64/Debug/Multithread.exe
+basic/Multithread/x64/Debug/Multithread.pdb
