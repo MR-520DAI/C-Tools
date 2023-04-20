@@ -28,7 +28,7 @@ public:
     MyException1(const string& errorMsg, int iId, const string& errorMsg1) :MyException(errorMsg, iId),
     errorMsg1_(errorMsg1) {}
 
-    virtual string what() const
+    virtual string what() const override
     {
         string errorMsg = "MyException1: ";
         errorMsg += errorMsg_;
