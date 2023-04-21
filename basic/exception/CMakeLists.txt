@@ -9,3 +9,4 @@ SET(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3 -Wall")
 
 add_executable(testerror ErrorClass.cpp)
 
+add_executable(smartptr SmartPtr.cpp)
