@@ -1,12 +1,11 @@
 cmake_minimum_required(VERSION 3.0)
 
-project(Error)
+project(SimpleFactor)
 
 set(CMAKE_CXX_STANDARD 11)
 SET(CMAKE_BUILD_TYPE "Debug")
 SET(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} -O0 -Wall -g2 -ggdb")
 SET(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3 -Wall")
 
-add_executable(testerror ErrorClass.cpp)
+add_executable(main main.cpp)
 
-add_executable(smartptr SmartPtr.cpp)
