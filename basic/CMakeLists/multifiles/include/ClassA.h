@@ -14,5 +14,16 @@ public:
     void PrintVal();
 };
 
+class HideHpp
+{
+public:
+    HideHpp();
+    ~HideHpp();
+
+    void print(int iVal);
+private:
+    class HideHppImpl;
+    class HideHppImpl* ptr;
+};
 
 #endif  // CLASS_A_H
