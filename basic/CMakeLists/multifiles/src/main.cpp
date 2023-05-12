@@ -9,5 +9,8 @@ int main()
     A.PrintVal();
     B->PrintVal();
 
+    HideHpp h;
+    h.print(2);
+
     return 0;
 }
