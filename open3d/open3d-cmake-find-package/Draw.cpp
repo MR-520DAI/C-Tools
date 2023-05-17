@@ -28,14 +28,18 @@
 
 void Draw()
 {
-    // open3d::geometry::PointCloud pcd;
-    // std::string filename = "xxxx.ply";
-    // open3d::io::ReadPointCloud(filename, pcd);
-    // int a = 0;
-    // auto sphere = open3d::geometry::TriangleMesh::CreateSphere(1.0);
-    // sphere->ComputeVertexNormals();
-    // sphere->PaintUniformColor({0.0, 1.0, 0.0});
-    // open3d::visualization::DrawGeometries({sphere});
+    open3d::camera::PinholeCameraIntrinsic cameraIntrinsic = open3d::camera::PinholeCameraIntrinsic(640, 480, 518.9676, 518.8751, 320.5551, 237.8842);
+    open3d::geometry::RGBDImage RGBDImg;
+    open3d::geometry::Image rgb, depth;
+    open3d::io::ReadImage("./001221.jpg", rgb);
+    open3d::io::ReadImage("./001221.png", depth);
+
+    RGBDImg = *open3d::geometry::RGBDImage::CreateFromColorAndDepth(
+        rgb, depth, 1000, 5.0, false);
+    auto pcd = open3d::geometry::PointCloud::CreateFromRGBDImage(RGBDImg,
+        cameraIntrinsic, Eigen::Matrix4d::Identity(), true);
+
+    open3d::visualization::DrawGeometries({pcd});
     return;
 }
 
