@@ -27,15 +27,16 @@
 #include "./inc/Mydraw.h"
 
 void Draw()
-{
-    open3d::camera::PinholeCameraIntrinsic cameraIntrinsic = open3d::camera::PinholeCameraIntrinsic(640, 480, 518.9676, 518.8751, 320.5551, 237.8842);
+{                                                                                                   // (640, 480, 518.9676, 518.8751, 320.5551, 237.8842)
+    open3d::camera::PinholeCameraIntrinsic cameraIntrinsic = open3d::camera::PinholeCameraIntrinsic(640, 480, 535.4, 539.2, 320.1, 247.6);
     open3d::geometry::RGBDImage RGBDImg;
     open3d::geometry::Image rgb, depth;
-    open3d::io::ReadImage("./001221.jpg", rgb);
-    open3d::io::ReadImage("./001221.png", depth);
+    // E:/c_project/learn/Open3D-master/examples/python/reconstruction_system/dataset/aobi_rgbd/maoge/color/
+    open3d::io::ReadImage("color.png", rgb);
+    open3d::io::ReadImage("depth.png", depth);
 
     RGBDImg = *open3d::geometry::RGBDImage::CreateFromColorAndDepth(
-        rgb, depth, 1000, 5.0, false);
+        rgb, depth, 5000, 5.0, false);
     auto pcd = open3d::geometry::PointCloud::CreateFromRGBDImage(RGBDImg,
         cameraIntrinsic, Eigen::Matrix4d::Identity(), true);
 
