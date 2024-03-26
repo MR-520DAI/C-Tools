@@ -7,10 +7,8 @@ class Constant
 {
 public:
     static Constant* get_instance(){
-        if (const_variables == nullptr){
-            const_variables = new Constant();
-        }
-        return const_variables;
+        static Constant const_variables;
+        return &const_variables;
     }
 
     void print(){
@@ -18,9 +16,7 @@ public:
         return;
     }
     ~Constant(){
-        if (Constant::const_variables){
-            cout<<"析构\n";
-        } 
+        cout<<"析构\n";
     }
     
 private:
@@ -30,34 +26,18 @@ private:
         age_ = 29;
         name_ = "DZY";
     }
-    static Constant* const_variables;
 
     // 浅拷贝复制
     Constant(const Constant&) = default;
     Constant& operator=(const Constant&) = default;
-
-    // 自动析构Constant
-    class XG
-    {
-    public:
-        ~XG(){
-            if (Constant::const_variables){
-                delete Constant::const_variables;
-            } 
-        }
-    };
-    static XG xg;
 };
-
-Constant* Constant::const_variables = nullptr;
-Constant::XG Constant::xg;
 
 int main()
 {
     auto c = Constant::get_instance();
     c->print();
 
-    auto b = c;
+    auto b = Constant::get_instance();
 
     return 0;
 }
