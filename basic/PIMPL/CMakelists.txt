@@ -5,8 +5,15 @@ project(PIMPL)
 set(CMAKE_CXX_STANDARD 11)
 SET(CMAKE_BUILD_TYPE "Debug")
 
-add_library(common STATIC 
-            a_interface.cpp)
+add_compile_definitions(EXPORT_DLL)
+
+add_library(a_lib SHARED 
+            a_impl.cpp)
+
+add_library(b_lib SHARED b_impl.cpp)
 
 add_executable(main main.cpp)
-target_link_libraries(main common)
+target_link_libraries(main a_lib)
+
+add_executable(main1 main1.cpp)
+target_link_libraries(main1 b_lib)
